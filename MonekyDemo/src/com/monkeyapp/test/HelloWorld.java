@@ -33,8 +33,8 @@ public class HelloWorld {
 	  //set up appium
 	  File classpathRoot = new File(System.getProperty("user.dir"));
 	  File appDir = new File(classpathRoot,"apps");
-	  File app = new File(appDir,"Monkey.app");
-	  
+	  File app = new File(appDir,"/MonekyDemo/apps/Monkey.app");
+	  String  app1 = "/Users/joyliu/QA_JAVA/MonekyDemo/apps/Monkey.app";
 	  DesiredCapabilities caps = new DesiredCapabilities();
 	  //设备平台
 	  caps.setCapability("platformName", "iOS");
@@ -43,17 +43,19 @@ public class HelloWorld {
 	  //版本
 	  caps.setCapability("platformVersion", "11.0");
 	  //app路径
-	  caps.setCapability("app", app.getAbsolutePath());
+	  caps.setCapability("app", app1);
 	  //禁止重签名
 	  caps.setCapability("noSign", true);
 	  //自动接收提示信息
 	  caps.setCapability("autoAcceptAlerts", true);
 	  driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"),caps);
+	  System.out.println("running done!");
 	 
   }
 
   @AfterClass
   public void afterClass() {
+	  System.out.println("running over!");
 	  driver.quit();
   }
 
